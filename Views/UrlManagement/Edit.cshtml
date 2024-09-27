@@ -1,0 +1,18 @@
+﻿@model UrlRecord
+
+<h2>Update URL</h2>
+
+<form asp-action="Edit">
+
+    <div class="form-group">
+        <label asp-for="LongUrl"></label>
+        <input asp-for="LongUrl" class="form-control" />
+        <span asp-validation-for="LongUrl" class="text-danger"></span>
+    </div>
+
+    <div class="btn-container">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" asp-controller="UrlDisplay" class="btn btn-secondary">Cancel</a>
+    </div>
+
+</form>

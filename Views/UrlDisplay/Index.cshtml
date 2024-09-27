@@ -1,0 +1,35 @@
+﻿@model IEnumerable<UrlRecord>
+
+<h1>URL Shortener</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Long URL</th>
+            <th>Short URL</th>
+            <th>Created At</th>
+            <th>Click Count</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var url in Model)
+        {
+            <tr>
+                <td style="word-break: break-all;">@url.LongUrl</td>
+                <td><a href="@url.ShortUrl">@url.ShortUrl</a></td>
+                <td>@url.CreatedAt</td>
+                <td class="text-center">@url.ClickCount</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="UrlManagement" asp-route-id="@url.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@url.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Кнопка для создания новой ссылки с отступами -->
+<div class="mb-3">
+    <a asp-action="Create" asp-controller="UrlManagement" class="btn btn-success">Create New URL</a>
+</div>
